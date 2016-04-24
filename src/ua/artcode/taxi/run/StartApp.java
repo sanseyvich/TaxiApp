@@ -9,7 +9,7 @@ public class StartApp {
 
 
     public static void main(String[] args) {
-        UserService userService = new UserServiceImpl(new UserDaoInnerDbImpl(new AppDB()));
+       UserService userService = new UserServiceImpl(new UserDaoInnerDbImpl(new AppDB()));
         //
 
     }
