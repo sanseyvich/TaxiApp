@@ -8,6 +8,7 @@ import ua.artcode.taxi.model.Order;
 import ua.artcode.taxi.model.User;
 
 import javax.security.auth.login.LoginException;
+import java.util.List;
 
 
 public interface ServiceUser {
@@ -23,6 +24,6 @@ public interface ServiceUser {
     Order cancelOrder(long orderId, User user) throws OrderNotFoundException, IllegalOperationWhithOrderException;
 
     //    Message cancelCurrentOrder() throws OrderNotFoundException;
-    Order[] cancelCurrentOrder(User user) throws IllegalOperationWhithOrderException;
+    List<Order> cancelCurrentOrder(User user) throws IllegalOperationWhithOrderException;
 
 }

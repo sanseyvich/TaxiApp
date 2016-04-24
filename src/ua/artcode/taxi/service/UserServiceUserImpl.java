@@ -1,6 +1,5 @@
 package ua.artcode.taxi.service;
 
-import ua.artcode.taxi.dao.UserDao;
 import ua.artcode.taxi.dao.UserDaoInnerDbImpl;
 import ua.artcode.taxi.exception.IllegalOperationWhithOrderException;
 import ua.artcode.taxi.exception.OrderMakeException;
@@ -9,18 +8,18 @@ import ua.artcode.taxi.exception.RegisterException;
 import ua.artcode.taxi.model.*;
 
 import javax.security.auth.login.LoginException;
-import java.awt.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 public class UserServiceUserImpl implements ServiceUser {
 
-    private UserDao userDao; //
+    private UserDaoInnerDbImpl userDao;
     //String - accessKeysUser, User
     private Map<String, User> accessKeysUserMap = new HashMap<>();
 
-    public UserServiceUserImpl(UserDao userDao) {
+    public UserServiceUserImpl(UserDaoInnerDbImpl userDao) {
         this.userDao = userDao;
     }
 
@@ -39,7 +38,7 @@ public class UserServiceUserImpl implements ServiceUser {
         return new Message("Вход", "Вход выполнен успешно");
     }
 
-    public Message logout (String accessKey) {
+    public Message logout(String accessKey) {
         //удалить из мапы
         return null;
     }
@@ -68,7 +67,7 @@ public class UserServiceUserImpl implements ServiceUser {
     }
 
     @Override
-    public List cancelCurrentOrder(User user) throws IllegalOperationWhithOrderException {
+    public List<Order> cancelCurrentOrder(User user) throws IllegalOperationWhithOrderException {
         if (!(accessKeysUserMap.containsValue(user)))
             throw new IllegalOperationWhithOrderException("Нет прав на данную операцию");
 
@@ -102,19 +101,22 @@ public class UserServiceUserImpl implements ServiceUser {
     public Order makeOrder(String accessToken, String from, String to) throws OrderMakeException {
         Address fromAddress = null;
         Address toAddress = null;
+        User user = null;
+        Order order = null;
 
         String stringAddress[] = from.split(",");
-        fromAddress = new Address(stringAddress[0],stringAddress[1],stringAddress[2]);
+        fromAddress = new Address(stringAddress[0], stringAddress[1], stringAddress[2]);
 
         String stringtoAddress[] = to.split(",");
-        toAddress = new Address(stringtoAddress[0],stringtoAddress[1],stringtoAddress[2]);
+        toAddress = new Address(stringtoAddress[0], stringtoAddress[1], stringtoAddress[2]);
 
         if (accessKeysUserMap.containsKey(accessToken)) {
-            (User)accessKeysUserMap.get(accessToken).getCurrentOrder().add(new Order(fromAddress,toAddress));
+            user = (User) accessKeysUserMap.get(accessToken);
+            order = new Order(fromAddress, toAddress, user);
+            user.getCurrentOrder().add(order);
         }
 
-
-        return null;
+        return order;
     }
 
     public Order makeOrderAnonymous(String phone, String from, String to) throws OrderMakeException {
