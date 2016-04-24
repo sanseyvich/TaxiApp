@@ -13,14 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Created by serhii on 23.04.16.
- */
-public class UserServiceImpl implements Service{
+public class UserServiceImpl implements Service {
 
     private UserDao userDao;
 
-    private List<String> accessKeys = new ArrayList<>();
+    private List<String> accessKeysUser = new ArrayList<>();
 
     public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
@@ -51,7 +48,7 @@ public class UserServiceImpl implements Service{
         }
 
         String accessKey = UUID.randomUUID().toString();
-        accessKeys.add(accessKey);
+        accessKeysUser.add(accessKey);
 
         return accessKey;
     }

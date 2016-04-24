@@ -23,6 +23,7 @@ public class UserDaoInnerDbImpl implements UserDao {
     @Override
     public Collection<User> getAll() {
         return null;
+
     }
 
     @Override
