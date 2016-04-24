@@ -7,8 +7,6 @@ public abstract class UserAbstract {
     private String pass;
     private String name;
 
-    public abstract Order[] getCurrentOrder();
-
     public int getId() {
         return id;
     }

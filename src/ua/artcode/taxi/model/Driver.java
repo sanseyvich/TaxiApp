@@ -1,48 +1,48 @@
 package ua.artcode.taxi.model;
 
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Driver extends UserAbstract{
 
-    private List<Car> cars = new ArrayList<Car>();
-    private Order[] orders = new Order[2];
-    private int ordersNum;
+    private List<Order> history = new LinkedList<>();
 
-    public Driver(int id, String name, String phone, String pass) {
-        setId(id);
-        setName(name);
-        setPhone(phone);
-        setPass(pass);
+    private List<Car> cars = new LinkedList<>();
+
+    private Car carDriverNow;
+
+    private Order order;
+
+    public Car getCarDriverNow() {
+        return carDriverNow;
     }
 
-    public Order[] makeOrder(Order order){
-        if (ordersNum < 2){
-            orders[ordersNum] = order;
-            return orders;
-        }
-        return null;
+    public void setCarDriverNow(Car carDriverNow) {
+        this.carDriverNow = carDriverNow;
     }
 
-    @Override
-    public Order[] getCurrentOrder() {
-        return orders;
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public int getOrdersNum() {
-        return ordersNum;
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
     }
 
-    public void setOrdersNum(int ordersNum) {
-        this.ordersNum = ordersNum;
+    public List<Order> getHistory() {
+        return history;
     }
 
-    public Order[] getOrders() {
-        return orders;
+    public void setHistory(List<Order> history) {
+        this.history = history;
     }
 
-    public void setOrders(Order[] orders) {
-        this.orders = orders;
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

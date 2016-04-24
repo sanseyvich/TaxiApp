@@ -1,29 +1,28 @@
 package ua.artcode.taxi.model;
 
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class User extends UserAbstract {
 
-    private Order[] orders = new Order[4];
-    private int ordersNum;
+    private List<Order> historyUserOrders = new LinkedList<>();
 
-    public User(int id, String name, String phone, String pass) {
-        setId(id);
-        setName(name);
-        setPhone(phone);
-        setPass(pass);
+    private List<Order> orders = new LinkedList<>();
+
+    public List<Order> getHistoryUserOrders() {
+        return historyUserOrders;
     }
 
-    public Order makeOrder(Address from, Address to){
-        if (ordersNum < 4){
-            return orders[ordersNum++] = new Order(from,to,this);
-        }
-        return null;
+    public void setHistoryUserOrders(List<Order> historyUserOrders) {
+        this.historyUserOrders = historyUserOrders;
     }
 
-
-
-    @Override
-    public Order[] getCurrentOrder() {
+    public List<Order> getOrders() {
         return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

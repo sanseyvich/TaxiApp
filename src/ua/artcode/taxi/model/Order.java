@@ -16,9 +16,9 @@ public class Order {
     //how to calculate
     private double distance;
 
-    private User user;
+    private UserAbstract user;
 
-    private User driver;
+    private UserAbstract driver;
 
     private int price;
 
@@ -59,19 +59,19 @@ public class Order {
         this.to = to;
     }
 
-    public User getUser() {
+    public UserAbstract getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserAbstract user) {
         this.user = user;
     }
 
-    public User getDriver() {
+    public UserAbstract getDriver() {
         return driver;
     }
 
-    public void setDriver(User driver) {
+    public void setDriver(UserAbstract driver) {
         this.driver = driver;
     }
 
