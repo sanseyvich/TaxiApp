@@ -1,8 +1,6 @@
 package ua.artcode.taxi.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * Created by serhii on 23.04.16.
@@ -29,6 +27,12 @@ public class Order {
     private OrderStatus orderStatus;
 
     public Order() {
+    }
+
+    public Order(Address from, Address to, User user) {
+        this.from = from;
+        this.to = to;
+        this.user = user;
     }
 
     public long getId() {
