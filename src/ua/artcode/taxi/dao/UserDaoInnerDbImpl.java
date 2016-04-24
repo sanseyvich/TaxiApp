@@ -1,11 +1,12 @@
 package ua.artcode.taxi.dao;
 
+import ua.artcode.taxi.model.User;
 import java.util.Collection;
 
 /**
  * Created by serhii on 23.04.16.
  */
-public class UserDaoInnerDbImpl<User> implements AbstractUserDao<User> {
+public class UserDaoInnerDbImpl implements AbstractUserDao<User> {
 
     private AppDB appDB;
 
@@ -36,11 +37,6 @@ public class UserDaoInnerDbImpl<User> implements AbstractUserDao<User> {
     @Override
     public User delete(int id) {
         return appDB.deleteUser(id);
-    }
-
-    @Override
-    public AbstractUser update(Object newUser) {
-        return null;
     }
 
     @Override

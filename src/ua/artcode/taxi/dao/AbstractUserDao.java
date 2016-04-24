@@ -1,11 +1,13 @@
 package ua.artcode.taxi.dao;
 
+import ua.artcode.taxi.model.UserAbstract;
+
 import java.util.Collection;
 
 /**
  * Created by olsas on 4/24/2016.
  */
-public interface AbstractUserDao<T extends AbstractUser>{
+public interface AbstractUserDao<T extends UserAbstract>{
     // return user with id
     T create(T AbsUser);
 

@@ -1,21 +1,24 @@
 package ua.artcode.taxi.dao;
 
+import com.google.gson.Gson;
+import ua.artcode.taxi.model.Driver;
 import ua.artcode.taxi.model.Order;
 import ua.artcode.taxi.model.User;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 // operations in application
-//to do - change orders to be stored in 2 tables - new, in progress, (ask about what we decide)
-public class AppDB {
+
+public class AppDB implements Serializable{
 
     private static int userIdCounter;
     private static int driverIdCounter;
     private static long orderIdCounter;
     private List<User> users;
     private List<Order> orders;
-    private List<Drivers> drivers;
+    private List<Driver> drivers;
 
     public AppDB() {
         users = new ArrayList<>();
@@ -54,7 +57,7 @@ public class AppDB {
     public Driver findDriver(String phone){
         for (Driver driver : drivers) {
             if(driver.getPhone().equals(phone)){
-                return user;
+                return driver;
             }
         }
         return null;
@@ -69,8 +72,8 @@ public class AppDB {
         return null;
     }
 
-    public Driver findDriverByID(int id){
-        for (Driver driver : driver) {
+    public Driver findDriverById(int id){
+        for (Driver driver : drivers) {
             if (driver.getId() == id) {
                 return driver;
             }
@@ -128,11 +131,22 @@ public class AppDB {
         this.orders = orders;
     }
 
-    public List<User> getDrivers() {
+    public List<Driver> getDrivers() {
         return drivers;
     }
 
-    public void setDrivers(List<User> drivers) {
+    public void setDrivers(List<Driver> drivers) {
         this.drivers = drivers;
     }
+
+/*    private void serializeDb() throws FileNotFoundException {
+        try (ObjectOutputStream objectOutputStream =
+                     new ObjectOutputStream(new FileOutputStream("DB_json")) {
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        FileInputStream fileInputStream = new
+        Gson gson
+    }*/
 }
