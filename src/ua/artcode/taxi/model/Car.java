@@ -10,9 +10,6 @@ public class Car {
     private String number;
     private String color;
 
-    public Car() {
-
-    }
 
     public Car(String type, String model, String number, String color) {
         this.type = type;
@@ -53,6 +50,7 @@ public class Car {
         this.color = color;
     }
 
+
     @Override
     public String toString() {
         return "Car{" +
@@ -62,4 +60,20 @@ public class Car {
                 ", color='" + color + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Car car = (Car) o;
+
+        if (type != null ? !type.equals(car.type) : car.type != null) return false;
+        if (model != null ? !model.equals(car.model) : car.model != null) return false;
+        if (number != null ? !number.equals(car.number) : car.number != null) return false;
+        return color != null ? color.equals(car.color) : car.color == null;
+
+    }
+
+
 }
