@@ -1,7 +1,6 @@
 package ua.artcode.taxi.service;
 
 import ua.artcode.taxi.exception.IllegalOperationWhithOrderException;
-import ua.artcode.taxi.exception.OrderMakeException;
 import ua.artcode.taxi.exception.OrderNotFoundException;
 import ua.artcode.taxi.exception.RegisterException;
 import ua.artcode.taxi.model.Message;
