@@ -1,6 +1,7 @@
 package ua.artcode.taxi.service;
 
 import ua.artcode.taxi.dao.UserDao;
+import ua.artcode.taxi.dao.UserDaoInnerDbImpl;
 import ua.artcode.taxi.exception.IllegalOperationWhithOrderException;
 import ua.artcode.taxi.exception.OrderMakeException;
 import ua.artcode.taxi.exception.OrderNotFoundException;
@@ -8,6 +9,7 @@ import ua.artcode.taxi.exception.RegisterException;
 import ua.artcode.taxi.model.*;
 
 import javax.security.auth.login.LoginException;
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -37,6 +39,11 @@ public class UserServiceUserImpl implements ServiceUser {
         return new Message("Вход", "Вход выполнен успешно");
     }
 
+    public Message logout (String accessKey) {
+        //удалить из мапы
+        return null;
+    }
+
     @Override
     public Message register(User user) throws RegisterException {
         // validation user object(phone, login, pass)
@@ -61,7 +68,7 @@ public class UserServiceUserImpl implements ServiceUser {
     }
 
     @Override
-    public Order[] cancelCurrentOrder(User user) throws IllegalOperationWhithOrderException {
+    public List cancelCurrentOrder(User user) throws IllegalOperationWhithOrderException {
         if (!(accessKeysUserMap.containsValue(user)))
             throw new IllegalOperationWhithOrderException("Нет прав на данную операцию");
 
@@ -103,8 +110,7 @@ public class UserServiceUserImpl implements ServiceUser {
         toAddress = new Address(stringtoAddress[0],stringtoAddress[1],stringtoAddress[2]);
 
         if (accessKeysUserMap.containsKey(accessToken)) {
-//            (User)accessKeysUserMap.get(accessToken).addO
-
+            (User)accessKeysUserMap.get(accessToken).getCurrentOrder().add(new Order(fromAddress,toAddress));
         }
 
 
