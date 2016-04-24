@@ -1,71 +1,29 @@
 package ua.artcode.taxi.model;
 
-/**
- * Created by serhii on 23.04.16.
- */
-public class User {
 
-    private int id;
-    private String phone;
-    private String pass;
-    // optinal
-    private String name;
+public class User extends UserAbstract {
 
-    public User() {
+    private Order[] orders = new Order[4];
+    private int ordersNum;
+
+    public User(int id, String name, String phone, String pass) {
+        setId(id);
+        setName(name);
+        setPhone(phone);
+        setPass(pass);
     }
 
-    public User(int id, String phone, String pass) {
-        this.id = id;
-        this.phone = phone;
-        this.pass = pass;
+    public Order makeOrder(Address from, Address to){
+        if (ordersNum < 4){
+            return orders[ordersNum++] = new Order(from,to,this);
+        }
+        return null;
     }
 
-    public User(int id, String phone, String pass, String name) {
-        this.id = id;
-        this.phone = phone;
-        this.pass = pass;
-        this.name = name;
-    }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", phone='" + phone + '\'' +
-                ", pass='" + pass + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+    public Order[] getCurrentOrder() {
+        return orders;
     }
 }
