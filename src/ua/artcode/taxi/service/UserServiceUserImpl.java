@@ -66,7 +66,7 @@ public class UserServiceUserImpl implements ServiceUser {
             throw new IllegalOperationWhithOrderException("Нет прав на данную операцию");
 
         if (!(user.getCurrentOrder() == null)) {
-            for (Order el : user.getCurrentOrder) {
+            for (Order el : user.getCurrentOrder()) {
                 if (!(el == null)) {
                     el.setOrderStatus(OrderStatus.CANCELLED);
                 }
@@ -82,7 +82,7 @@ public class UserServiceUserImpl implements ServiceUser {
             throw new IllegalOperationWhithOrderException("Нет прав на данную операцию");
 
 //        if (user.g) throw new OrderNotFoundException("Не найден такой Order" + orderId);
-        for (Order el : user.getCurrentOrder) {
+        for (Order el : user.getCurrentOrder()) {
             if (el.getId() == orderId) {
                 el.setOrderStatus(OrderStatus.CANCELLED);
                 return el;
