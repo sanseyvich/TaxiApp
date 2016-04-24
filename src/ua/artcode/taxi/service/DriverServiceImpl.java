@@ -13,6 +13,7 @@ import javax.security.auth.login.LoginException;
  * Created by olsas on 4/23/2016.
  */
 public class DriverServiceImpl implements Service{
+
     @Override
     public Message register(User user) throws RegisterException {
         return null;
