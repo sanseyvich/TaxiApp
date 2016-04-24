@@ -15,6 +15,9 @@ public class Order {
 
     private Address to;
 
+    //how to calculate
+    private double distance;
+
     private User user;
 
     private User driver;

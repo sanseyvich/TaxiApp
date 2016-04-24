@@ -16,7 +16,7 @@ import java.util.UUID;
 /**
  * Created by serhii on 23.04.16.
  */
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements Service{
 
     private UserDao userDao;
 
@@ -56,12 +56,10 @@ public class UserServiceImpl implements UserService{
         return accessKey;
     }
 
-    @Override
     public Order makeOrder(String accessToken, String from, String to) throws OrderMakeException {
         return null;
     }
 
-    @Override
     public Order makeOrderAnonymous(String phone, String from, String to) throws OrderMakeException {
         return null;
     }

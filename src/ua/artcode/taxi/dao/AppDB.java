@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // operations in application
+//to do - change orders to be stored in 2 tables - new, in progress,
 public class AppDB {
 
     private static int userIdCounter;

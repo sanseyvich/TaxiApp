@@ -12,15 +12,12 @@ import javax.security.auth.login.LoginException;
 /**
  * Created by serhii on 23.04.16.
  */
-public interface UserService {
+public interface Service {
 
     Message register(User user) throws RegisterException;
 
     // return accessToken
     String login(String phone, String pass) throws LoginException;
-
-    Order makeOrder(String accessToken, String from, String to) throws OrderMakeException;
-    Order makeOrderAnonymous(String phone, String from, String to) throws OrderMakeException;
 
     Order submitOrder(Order order) throws OrderMakeException;
 
