@@ -18,11 +18,11 @@ public class User extends UserAbstract {
         this.historyUserOrders = historyUserOrders;
     }
 
-    public List<Order> getOrders() {
+    public List<Order> getCurrentOrder() {
         return orders;
     }
 
-    public void setOrders(List<Order> orders) {
+    public void setCurrentOrder(List<Order> orders) {
         this.orders = orders;
     }
 }
