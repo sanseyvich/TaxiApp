@@ -1,17 +1,18 @@
 package ua.artcode.taxi.model;
 
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class User extends UserAbstract {
 
-    private Order[] orders = new Order[4];
+    private List<Order> orders = new LinkedList<>();
 
-
-    public Order[] getCurrentOrder() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public void setCurrentOrder(Order[] orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
-
 }
