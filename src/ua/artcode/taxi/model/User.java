@@ -6,6 +6,8 @@ import java.util.List;
 
 public class User extends UserAbstract {
 
+
+
     private List<Order> historyUserOrders = new LinkedList<>();
 
     private List<Order> orders = new LinkedList<>();

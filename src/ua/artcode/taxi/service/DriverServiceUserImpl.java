@@ -8,11 +8,12 @@ import ua.artcode.taxi.model.Order;
 import ua.artcode.taxi.model.User;
 
 import javax.security.auth.login.LoginException;
+import java.util.List;
 
 
 public class DriverServiceUserImpl implements ServiceUser {
     @Override
-    public Message login(String phone, String pass) throws LoginException {
+    public String login(String phone, String pass) throws LoginException {
         return null;
     }
 
@@ -32,8 +33,9 @@ public class DriverServiceUserImpl implements ServiceUser {
     }
 
     @Override
-    public Order[] cancelCurrentOrder(User user) throws IllegalOperationWhithOrderException {
-        return new Order[0];
+    public List<Order> cancelCurrentOrder(User user) throws IllegalOperationWhithOrderException {
+        return null;
     }
-//public
+
+    //public
 }

@@ -24,7 +24,7 @@ public class UserServiceUserImpl implements ServiceUser {
     }
 
     @Override
-    public Message login(String phone, String pass) throws LoginException {
+    public String login(String phone, String pass) throws LoginException {
         User found = userDao.findByPhone(phone);
 
         if (found == null || !found.getPass().equals(pass)) {
@@ -35,7 +35,8 @@ public class UserServiceUserImpl implements ServiceUser {
 //        accessKeysUser.add(accessKey);
         accessKeysUserMap.put(accessKey, found);
 
-        return new Message("Вход", "Вход выполнен успешно");
+//        return new Message("Вход", "Вход выполнен успешно");
+        return accessKey;
     }
 
     public Message logout(String accessKey) {
@@ -113,6 +114,8 @@ public class UserServiceUserImpl implements ServiceUser {
         if (accessKeysUserMap.containsKey(accessToken)) {
             user = (User) accessKeysUserMap.get(accessToken);
             order = new Order(fromAddress, toAddress, user);
+            order.setDistance(new ServiceOrder().getDist() );
+            System.out.printf("Расстояние = " + order.getDistance());
             user.getCurrentOrder().add(order);
         }
 

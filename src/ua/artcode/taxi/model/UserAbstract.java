@@ -7,6 +7,7 @@ public abstract class UserAbstract {
     private String pass;
     private String name;
 
+
     public int getId() {
         return id;
     }

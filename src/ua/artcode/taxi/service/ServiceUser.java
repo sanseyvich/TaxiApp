@@ -14,7 +14,7 @@ import java.util.List;
 public interface ServiceUser {
 
     // return accessToken
-    Message login(String phone, String pass) throws LoginException;
+    String login(String phone, String pass) throws LoginException;
 
     Message register(User user) throws RegisterException;
 

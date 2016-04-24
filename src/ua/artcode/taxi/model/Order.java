@@ -2,9 +2,7 @@ package ua.artcode.taxi.model;
 
 import java.time.LocalDateTime;
 
-/**
- * Created by serhii on 23.04.16.
- */
+
 public class Order {
 
     private long id;
@@ -33,6 +31,15 @@ public class Order {
         this.from = from;
         this.to = to;
         this.user = user;
+
+    }
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 
     public long getId() {
